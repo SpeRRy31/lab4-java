@@ -4,6 +4,7 @@ import java.util.*;
 public class OneDimensionalArray implements DoubleArrayReader, ArrayProcessor{
     public double[] readOneDimensionalArray(String fileName) {
         try (Scanner in = new Scanner(new File(fileName))) {
+            System.out.println("scan");
             int n = in.nextInt();
             double[] arr = new double[n];
             for (int i = 0; i < arr.length; i++) {
@@ -11,8 +12,8 @@ public class OneDimensionalArray implements DoubleArrayReader, ArrayProcessor{
             }
             return arr;
         }
-        catch (IOException ex) {
-            System.err.println("Error reading file");
+        catch (FileNotFoundException ex) {
+            System.err.println("Error reading file " + ex.getMessage());
             return null;
         }
     }
@@ -20,14 +21,12 @@ public class OneDimensionalArray implements DoubleArrayReader, ArrayProcessor{
     public double[] readOneDimensionalArray(File file){
         try (Scanner in = new Scanner(file)) {
             int n = in.nextInt();
-            double[] arr = new double[n];
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = in.nextDouble();
-            }
-            return arr;
+            String arr = in.nextLine();
+            System.out.println(arr);
+            return stringToArray(n, in.nextLine());
         }
-        catch (IOException ex) {
-            System.err.println("Error reading file");
+        catch (FileNotFoundException ex) {
+            System.err.println("Error reading file " + ex.getMessage());
             return null;
         }
     }
@@ -56,6 +55,23 @@ public class OneDimensionalArray implements DoubleArrayReader, ArrayProcessor{
         }
     }
     public void processArray(double[][] array){
+    }
+
+    private double[] stringToArray(int length, String array){
+        String[] stringValues = array.split(" ");
+
+        double[] doubleArray = new double[length];
+
+        for (int i = 0; i < length; i++) {
+            try {
+                doubleArray[i] = Double.parseDouble(stringValues[i]);
+            } catch (NumberFormatException e) {
+                System.err.println("Помилка формату числа на позиції " + i + ": " + stringValues[i]);
+                return null;
+            }
+        }
+
+        return doubleArray;
     }
 
 }
