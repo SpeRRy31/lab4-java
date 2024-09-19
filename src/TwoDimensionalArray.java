@@ -1,57 +1,37 @@
 import java.io.*;
 import java.util.*;
 
-public class OneDimensionalArray implements DoubleArrayReader, ArrayProcessor{
+public class TwoDimensionalArray implements DoubleArrayReader, ArrayProcessor{
     public double[] readOneDimensionalArray(String fileName) {
-        try (Scanner in = new Scanner(new File(fileName))) {
-            int n = in.nextInt();
-            String arr = in.nextLine();
-            System.out.println(arr);
-            return stringToArray(n, in.nextLine());
-        }
-        catch (FileNotFoundException ex) {
-            System.err.println("Error reading file " + ex.getMessage());
-            return null;
-        }
+        return null;
     }
 
     public double[] readOneDimensionalArray(File file){
-        try (Scanner in = new Scanner(file)) {
-            int n = in.nextInt();
-            String arr = in.nextLine();
-            System.out.println(arr);
-            return stringToArray(n, in.nextLine());
-        }
-        catch (FileNotFoundException ex) {
-            System.err.println("Error reading file " + ex.getMessage());
-            return null;
-        }
+        return null;
     }
 
     public double[][] readTwoDimensionalArray(File file){
+        //here
         return null;
     }
 
     public double[][] readTwoDimensionalArray(String fileName){
+        //here
         return null;
     }
 
     public double calculate(double[] array){
-        double multi = 1;
-        for (int i = 0; i < array.length; i++){
-            multi=multi * array[i];
-        }
-        return multi;
+        return 0;
     }
     public double calculate(double[][] array){
+        //here
+
         return 0;
     }
     public void processArray(double[] array){
-        for (int i = 0; i < array.length; i++) {
-            System.out.printf(array[i] + "; ");
-        }
     }
     public void processArray(double[][] array){
+        //here
     }
 
     private double[] stringToArray(int length, String array){
@@ -70,5 +50,4 @@ public class OneDimensionalArray implements DoubleArrayReader, ArrayProcessor{
 
         return doubleArray;
     }
-
 }
