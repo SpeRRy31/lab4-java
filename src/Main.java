@@ -12,8 +12,23 @@ public class Main {
 
         printArrayProcess(arrayManager, array);
 
+        File lab42 = new File("src/lab42.txt");
+        TwoDimensionalArray arrayManager2 = new TwoDimensionalArray();
+
+        double[][] array2 = arrayManager2.readTwoDimensionalArray(lab42);
+
+        printArrayProcess(arrayManager2, array2);
+
     }
+
+
     public static void printArrayProcess(ArrayProcessor obj, double[] arr){
+        obj.processArray(arr);
+
+        System.out.println(" ");
+        System.out.println("array calculate: " + obj.calculate(arr));
+    }
+    public static void printArrayProcess(ArrayProcessor obj, double[][] arr){
         obj.processArray(arr);
 
         System.out.println(" ");
